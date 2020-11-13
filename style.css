@@ -11,13 +11,53 @@
     margin: 0;
     padding: 0;
 }
+
+body {
+    font-family: 'Tahoma';
+}
 /* ******************** [Global] ******************** */
 
 /* ******************** [Header] ******************** */
+header {
+    height: 120px;
+    display: grid;
+    grid-template-columns: 50% auto;
+    border-bottom: 2px solid #000000;
+    text-align: center;
+}
+header #logo {
+    font-family: 'Vivaldi';
+    font-size: 5em;
+}
+header nav {
+    margin-top: 10%;
+    margin-left: auto;
+    padding: 20px;
+}
+header nav a {
+    margin-right: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #492525;
+}
+header nav a:hover {
+    text-decoration: underline;
+}
 /* ******************** [Header] ******************** */
 
 /* ******************** [Main] ******************** */
+main {
+    min-height: 500px;
+    padding: 25px;
+}
 /* ******************** [Main] ******************** */
 
 /* ******************** [Footer] ******************** */
+footer {
+    height: 25px;
+    text-align: center;
+}
+footer #copyrights {
+    font-size: 1em;
+}
 /* ******************** [Footer] ******************** */
