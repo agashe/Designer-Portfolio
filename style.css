@@ -50,6 +50,18 @@ main {
     min-height: 500px;
     padding: 25px;
 }
+
+/* ***** - About - ***** */
+#about-tab {
+    margin: 15px auto;
+    text-align: center;
+}
+#about-tab h1 , #about-tab p {
+    margin: 15px;
+}
+#about-tab i[class*="gg-"] {
+    display: inline-block;
+}
 /* ******************** [Main] ******************** */
 
 /* ******************** [Footer] ******************** */

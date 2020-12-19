@@ -18,7 +18,7 @@
 document.title = data.designer_name + ' Portfolio';
 
 /**
- * Set logo
+ * Set logo / copyrights
  */
 
 document.getElementById('logo').innerText = data.designer_name;
@@ -80,5 +80,21 @@ document.getElementById('personal-tab-btn').addEventListener('click', function()
 document.getElementById('about-tab-btn').addEventListener('click', function(){
     hideAll(tabs);
     show(about);
-    about.innerHTML = 'lol3';
+
+    var content = '';
+    content += '<h1>' + data.about.title + '</h1>';
+    content += '<p>' + data.about.bio + '</p>';
+    content += '<p>' + data.about.major + '</p>';
+
+    content += '<ul>';
+    for (var i = 0;i < data.about.skills.length;i++) {
+        content += '<li>' + data.about.skills[i] + '</li>';
+    }
+    content += '</ul>';
+
+    content += '<p>Contact:</p>';
+    content += '<p><a href=""><i class="gg-facebook"></i></a>';
+    content += '<a href=""><i class="gg-mail"></i></a></p>';
+
+    about.innerHTML = content;
 });
