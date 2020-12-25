@@ -7,38 +7,59 @@
  */
 
 /**
+ * Please Note:
+ * 
  * Befor start make sure to run command :
  * cp data.example.js data.js
  */
 
 /**
- * Set page title
- */
-
-document.title = data.designer_name + ' Portfolio';
-
-/**
- * Set logo / copyrights
- */
-
-document.getElementById('logo').innerText = data.designer_name;
-document.getElementById('copyrights').innerHTML = data.designer_name + ' &copy; 2020';
-
-
-/**
  * Main Vars
  */
-
 var tabs = document.getElementsByClassName('tab');
-
 var work = document.getElementById('work-tab');
 var personal = document.getElementById('personal-tab');
 var about = document.getElementById('about-tab');
 
 /**
+ * On page load
+ */
+document.addEventListener("DOMContentLoaded", function(){
+    /**
+     * Set page title
+     */
+    document.title = data.designer_name + ' Portfolio';
+
+    /**
+     * Set logo / copyrights
+     */
+    document.getElementById('logo').innerText = data.designer_name;
+    document.getElementById('copyrights').innerHTML = data.designer_name + ' &copy; 2020';
+
+    /**
+     * Set default tab
+     */
+    setTab(work, 'toto');
+
+    /**
+     * Select tab (work, personal and about)
+     */
+    document.getElementById('work-tab-btn').addEventListener('click', function(){
+        setTab(work, 'work');
+    });
+
+    document.getElementById('personal-tab-btn').addEventListener('click', function(){
+        setTab(personal, 'personal');
+    });
+
+    document.getElementById('about-tab-btn').addEventListener('click', function(){
+        setTab(about, aboutTab());
+    });
+});
+
+/**
  * Hide/Show helpers
  */
-
 function hide(el){
     el.style.display = "none";
 }
@@ -53,35 +74,26 @@ function hideAll(els){
     }
 }
 
-/**
- * Set work
- */
-
-document.getElementById('work-tab-btn').addEventListener('click', function(){
+function setTab(tab, content){
     hideAll(tabs);
-    show(work);
-    work.innerHTML = 'lol1';
-});
+    show(tab);
+    tab.innerHTML = content;
+}
 
 /**
- * Set personal
+ * Tabs
  */
+function workTab(){
+    
+}
 
-document.getElementById('personal-tab-btn').addEventListener('click', function(){
-    hideAll(tabs);
-    show(personal);
-    personal.innerHTML = 'lol2';
-});
+function personalTab(){
 
-/**
- * Set about
- */
+}
 
-document.getElementById('about-tab-btn').addEventListener('click', function(){
-    hideAll(tabs);
-    show(about);
-
+function aboutTab(){
     var content = '';
+
     content += '<h1>' + data.about.title + '</h1>';
     content += '<p>' + data.about.bio + '</p>';
     content += '<p>' + data.about.major + '</p>';
@@ -96,5 +108,5 @@ document.getElementById('about-tab-btn').addEventListener('click', function(){
     content += '<p><a href=""><i class="gg-facebook"></i></a>';
     content += '<a href=""><i class="gg-mail"></i></a></p>';
 
-    about.innerHTML = content;
-});
+    return content;
+}
