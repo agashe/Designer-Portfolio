@@ -23,6 +23,7 @@
  * Main Vars
  */
 var tabs = document.getElementsByClassName('tab');
+var buttons = document.getElementsByClassName('btn');
 var work = document.getElementById('work-tab');
 var personal = document.getElementById('personal-tab');
 var about = document.getElementById('about-tab');
@@ -47,20 +48,24 @@ document.addEventListener("DOMContentLoaded", function(){
      * Set default tab
      */
     setTab(work, workTab());
+    document.getElementById('work-tab-btn').style.textDecoration = "underline";
 
     /**
      * Select tab (work, personal and about)
      */
     document.getElementById('work-tab-btn').addEventListener('click', function(){
         setTab(work, workTab());
+        document.getElementById('work-tab-btn').style.textDecoration = "underline";
     });
 
     document.getElementById('personal-tab-btn').addEventListener('click', function(){
         setTab(personal, personalTab());
+        document.getElementById('personal-tab-btn').style.textDecoration = "underline";
     });
 
     document.getElementById('about-tab-btn').addEventListener('click', function(){
         setTab(about, aboutTab());
+        document.getElementById('about-tab-btn').style.textDecoration = "underline";
     });
 });
 
@@ -85,6 +90,11 @@ function setTab(tab, content){
     hideAll(tabs);
     show(tab);
     tab.innerHTML = content;
+
+    // remove underline from all tabs buttons
+    for (var i = 0;i < buttons.length;i++) {
+        buttons[i].style.textDecoration = '';
+    }
 }
 
 /**
