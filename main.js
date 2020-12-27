@@ -20,52 +20,56 @@
  */
 
 /**
- * Main Vars
+ * Elements
  */
-var tabs = document.getElementsByClassName('tab');
-var buttons = document.getElementsByClassName('btn');
-var work = document.getElementById('work-tab');
-var personal = document.getElementById('personal-tab');
-var about = document.getElementById('about-tab');
+var logo           = document.getElementById('logo');
+var copyrights     = document.getElementById('copyrights');
+
+var tabs           = document.getElementsByClassName('tab');
+var workTap        = document.getElementById('work-tab');
+var personalTap    = document.getElementById('personal-tab');
+var aboutTap       = document.getElementById('about-tab');
+
+var buttons        = document.getElementsByClassName('btn');
+var workTapBtn     = document.getElementById('work-tab-btn');
+var personalTapBtn = document.getElementById('personal-tab-btn');
+var aboutTapBtn    = document.getElementById('about-tab-btn');
 
 /**
  * On page load
  */
 document.addEventListener("DOMContentLoaded", function(){
     /**
-     * Set page title
+     * Set page title / logo / copyrights
      */
+    logo.innerText = data.designer_name;
     document.title = data.designer_name + ' Portfolio';
-
-    /**
-     * Set logo / copyrights
-     */
-    var copyrights = "All content rights are reserved <br> " + data.designer_name + ' &copy; 2020';
-    document.getElementById('logo').innerText = data.designer_name;
-    document.getElementById('copyrights').innerHTML = copyrights;
+    copyrights.innerHTML = "All content rights are reserved <br> " + 
+        data.designer_name + 
+        ' &copy; 2020';
 
     /**
      * Set default tab
      */
-    setTab(work, workTab());
-    document.getElementById('work-tab-btn').style.textDecoration = "underline";
+    setTab(workTap, workTabContent());
+    workTapBtn.style.textDecoration = "underline";
 
     /**
      * Select tab (work, personal and about)
      */
-    document.getElementById('work-tab-btn').addEventListener('click', function(){
-        setTab(work, workTab());
-        document.getElementById('work-tab-btn').style.textDecoration = "underline";
+    workTapBtn.addEventListener('click', function(){
+        setTab(workTap, workTabContent());
+        workTapBtn.style.textDecoration = "underline";
     });
 
-    document.getElementById('personal-tab-btn').addEventListener('click', function(){
-        setTab(personal, personalTab());
-        document.getElementById('personal-tab-btn').style.textDecoration = "underline";
+    personalTapBtn.addEventListener('click', function(){
+        setTab(personalTap, personalTabContent());
+        personalTapBtn.style.textDecoration = "underline";
     });
 
-    document.getElementById('about-tab-btn').addEventListener('click', function(){
-        setTab(about, aboutTab());
-        document.getElementById('about-tab-btn').style.textDecoration = "underline";
+    aboutTapBtn.addEventListener('click', function(){
+        setTab(aboutTap, aboutTabContent());
+        aboutTapBtn.style.textDecoration = "underline";
     });
 });
 
@@ -98,9 +102,9 @@ function setTab(tab, content){
 }
 
 /**
- * Tabs
+ * Tabs Content
  */
-function workTab(){
+function workTabContent(){
     var content = '';
     var i , j, k = 0;
     var title = '', image = '';
@@ -127,7 +131,7 @@ function workTab(){
     return content;
 }
 
-function personalTab(){
+function personalTabContent(){
     var content = '';
     var i , j, k = 0;
     var title = '', image = '';
@@ -154,7 +158,7 @@ function personalTab(){
     return content;
 }
 
-function aboutTab(){
+function aboutTabContent(){
     var content = '';
 
     content += '<h1>' + data.about.title + '</h1>';
