@@ -60,7 +60,7 @@ main {
 #about-tab h1 {
     margin: 15px;
 }
-#about-tab p {
+#about-tab p , #about-tab article {
     margin: 10px;
 }
 #about-tab h4 {

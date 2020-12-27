@@ -102,7 +102,7 @@ function aboutTab(){
     var content = '';
 
     content += '<h1>' + data.about.title + '</h1>';
-    content += '<p>' + data.about.bio + '</p>';
+    content += '<article>' + data.about.bio + '</article>';
 
     content += '<h4>Key Skills</h4>';
     content += '<div class="clear"><ul>';
