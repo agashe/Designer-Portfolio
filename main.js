@@ -19,9 +19,6 @@
  * 
  */
 
-/**
- * Elements
- */
 var logo           = document.getElementById('logo');
 var copyrights     = document.getElementById('copyrights');
 
@@ -35,41 +32,30 @@ var workTapBtn     = document.getElementById('work-tab-btn');
 var personalTapBtn = document.getElementById('personal-tab-btn');
 var aboutTapBtn    = document.getElementById('about-tab-btn');
 
-/**
- * On page load
- */
 document.addEventListener("DOMContentLoaded", function(){
     /**
-     * Set page title / logo / copyrights
+     * Initialize
      */
     logo.innerText = data.designer_name;
     document.title = data.designer_name + ' Portfolio';
+    setTab(workTap, workTapBtn, tabContent('work'));
     copyrights.innerHTML = "All content rights are reserved <br> " + 
         data.designer_name + 
         ' &copy; 2020';
 
     /**
-     * Set default tab
-     */
-    setTab(workTap, workTabContent());
-    workTapBtn.style.textDecoration = "underline";
-
-    /**
      * Select tab (work, personal and about)
      */
     workTapBtn.addEventListener('click', function(){
-        setTab(workTap, workTabContent());
-        workTapBtn.style.textDecoration = "underline";
+        setTab(workTap, workTapBtn, tabContent('work'));
     });
 
     personalTapBtn.addEventListener('click', function(){
-        setTab(personalTap, personalTabContent());
-        personalTapBtn.style.textDecoration = "underline";
+        setTab(personalTap, personalTapBtn, tabContent('personal'));
     });
 
     aboutTapBtn.addEventListener('click', function(){
-        setTab(aboutTap, aboutTabContent());
-        aboutTapBtn.style.textDecoration = "underline";
+        setTab(aboutTap, aboutTapBtn, tabContent('about'));
     });
 });
 
@@ -90,7 +76,7 @@ function hideAll(els){
     }
 }
 
-function setTab(tab, content){
+function setTab(tab, tabBtn, content){
     hideAll(tabs);
     show(tab);
     tab.innerHTML = content;
@@ -99,89 +85,69 @@ function setTab(tab, content){
     for (var i = 0;i < buttons.length;i++) {
         buttons[i].style.textDecoration = '';
     }
+
+    tabBtn.style.textDecoration = "underline";
 }
 
 /**
  * Tabs Content
  */
-function workTabContent(){
+function tabContent(tab = 'work'){
     var content = '';
     var i , j, k = 0;
     var title = '', image = '';
 
-    for (i = 0;i < 4;i++) {
-        content += '<div class="row">';
-        for (j = 0;j < 4;j++) {
-            if (data.work[k] === undefined) 
-                continue;
+    switch (tab) {
+        case 'work':
+        case 'personal':
+            for (i = 0;i < 4;i++) {
+                content += '<div class="row">';
+                for (j = 0;j < 4;j++) {
+                    if (tab == 'work') {
+                        if (data.work[k] === undefined) continue;
+                        title = data.work[k].name;
+                        image = data.work[k].cover;
+                    }
+                    else if (tab == 'personal') {
+                        if (data.personal[k] === undefined) continue;
+                        title = data.personal[k].name;
+                        image = data.personal[k].image;
+                    }
 
-            title = data.work[k].name;
-            image = data.work[k].cover;
+                    content += '<div class="column">';
+                    content += '<img src="' + image + '" alt="' + title + ' Cover"/>';
+                    content += '<a href="javascript:;" class="link" data-id="'+ k +'">' + title + '</a>';
+                    content += '</div>';
+                    
+                    k += 1;
+                }
+                content += '</div>';
+            }
+        break;
+        case 'about':
+            content += '<h1>' + data.about.title + '</h1>';
+            content += '<article>' + data.about.bio + '</article>';
+
+            content += '<h4>Key Skills</h4>';
+            content += '<div class="clear"><ul>';
+            for (i = 0;i < data.about.skills.length/2;i++) {
+                content += '<li>' + data.about.skills[i] + '</li>';
+            }
+
+            content += '</ul><ul>';
             
-            content += '<div class="column">';
-            content += '<img src="' + image + '" alt="' + title + ' Cover"/>';
-            content += '<a href="javascript:;" class="link" data-id="'+ k +'">' + title + '</a>';
-            content += '</div>';
-            
-            k += 1;
-        }
-        content += '</div>';
+            for (i = data.about.skills.length/2;i < data.about.skills.length;i++) {
+                content += '<li>' + data.about.skills[i] + '</li>';
+            }
+            content += '</ul></div>';
+
+            content += '<h4>Contact</h4>';
+            content += '<p><a href="' + data.about.contact.facebook + '">';
+            content += '<i class="gg-facebook"></i></a>';
+            content += '<a href="mailto:' + data.about.contact.email + '">';
+            content += '<i class="gg-mail"></i></a></p>';
+        break;
     }
-
-    return content;
-}
-
-function personalTabContent(){
-    var content = '';
-    var i , j, k = 0;
-    var title = '', image = '';
-
-    for (i = 0;i < 4;i++) {
-        content += '<div class="row">';
-        for (j = 0;j < 4;j++) {
-            if (data.personal[k] === undefined) 
-                continue;
-
-            title = data.personal[k].name;
-            image = data.personal[k].image;
-            
-            content += '<div class="column">';
-            content += '<img src="' + image + '" alt="' + title + ' Cover"/>';
-            content += '<a href="javascript:;" class="link" data-id="'+ k +'">' + title + '</a>';
-            content += '</div>';
-            
-            k += 1;
-        }
-        content += '</div>';
-    }
-
-    return content;
-}
-
-function aboutTabContent(){
-    var content = '';
-
-    content += '<h1>' + data.about.title + '</h1>';
-    content += '<article>' + data.about.bio + '</article>';
-
-    content += '<h4>Key Skills</h4>';
-    content += '<div class="clear"><ul>';
-    for (var i = 0;i < data.about.skills.length/2;i++) {
-        content += '<li>' + data.about.skills[i] + '</li>';
-    }
-
-    content += '</ul><ul>';
-    
-    for (var i = data.about.skills.length/2;i < data.about.skills.length;i++) {
-        content += '<li>' + data.about.skills[i] + '</li>';
-    }
-    content += '</ul></div>';
-
-    content += '<h4>Contact</h4>';
-    content += '<p><a href="' + data.about.contact.facebook + '">';
-    content += '<i class="gg-facebook"></i></a>';
-    content += '<a href="mailto:' + data.about.contact.email + '">';
-    content += '<i class="gg-mail"></i></a></p>';
 
     return content;
 }
