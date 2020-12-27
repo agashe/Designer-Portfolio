@@ -26,6 +26,7 @@ var tabs           = document.getElementsByClassName('tab');
 var workTap        = document.getElementById('work-tab');
 var personalTap    = document.getElementById('personal-tab');
 var aboutTap       = document.getElementById('about-tab');
+var galleryTap     = document.getElementById('gallery-tab');
 
 var buttons        = document.getElementsByClassName('btn');
 var workTapBtn     = document.getElementById('work-tab-btn');
@@ -44,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function(){
         ' &copy; 2020';
 
     /**
-     * Select tab (work, personal and about)
+     * Select tab (work, personal, gallery and about)
      */
     workTapBtn.addEventListener('click', function(){
         setTab(workTap, workTapBtn, tabContent('work'));
