@@ -2,8 +2,9 @@
  * Designer Portfolio
  *
  * Auther: Mohamed Yousef <engineer.mohamed.yossef@gmail.com>
- * Version: 1.0.0
  * GitHub: https://github.com/agashe/Designer-Portfolio
+ * Version: 1.0.0
+ * License: MIT
  */
 
 /**
@@ -38,8 +39,9 @@ document.addEventListener("DOMContentLoaded", function(){
     /**
      * Set logo / copyrights
      */
+    var copyrights = "All content rights are reserved to " + data.designer_name + ' &copy; 2020';
     document.getElementById('logo').innerText = data.designer_name;
-    document.getElementById('copyrights').innerHTML = data.designer_name + ' &copy; 2020';
+    document.getElementById('copyrights').innerHTML = copyrights;
 
     /**
      * Set default tab
