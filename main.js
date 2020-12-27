@@ -7,13 +7,15 @@
  */
 
 /**
- * Please Note:
  * 
  * Befor start:
+ * ------------
+ * 
  * - run command  $ cp data.example.js data.js
  * - update data.js with your info.
  * - add your favicon.ico
  * - create images directory (optional!!)
+ * 
  */
 
 /**
