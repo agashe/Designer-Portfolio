@@ -20,6 +20,10 @@ var data = {
             "skill1",
             "skill2",
             "skill3"
-        ]
+        ],
+        "contact": {
+            "email": "",
+            "facebook": ""
+        }
     }
 };

@@ -28,6 +28,7 @@ header #logo {
     margin: 15px 15px;
     font-family: 'Vivaldi';
     font-size: 5em;
+    color: #492525;
 }
 header nav {
     margin-top: 10%;
@@ -47,20 +48,44 @@ header nav a:hover {
 
 /* ******************** [Main] ******************** */
 main {
-    min-height: 500px;
+    min-height: 430px;
     padding: 25px;
 }
 
 /* ***** - About - ***** */
 #about-tab {
-    margin: 15px auto;
+    margin: 5px auto;
     text-align: center;
 }
-#about-tab h1 , #about-tab p {
+#about-tab h1 {
     margin: 15px;
+}
+#about-tab p {
+    margin: 10px;
+}
+#about-tab h4 {
+    margin-top: 40px;
+}
+#about-tab ul {
+    width: 40%;
+    margin: 25px 15px;
+    text-align: left;
+    float: right;
+}
+#about-tab ul li {
+    margin-bottom: 5px;
+    line-height: 1.5;
 }
 #about-tab i[class*="gg-"] {
     display: inline-block;
+    margin: 10px;
+}
+.clear {
+    min-height: 250px;
+    width: 725px;
+    margin: 0 auto;
+    padding: 0px 200px;
+    clear: both;
 }
 /* ******************** [Main] ******************** */
 

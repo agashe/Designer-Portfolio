@@ -1,9 +1,9 @@
 /**
  * Designer Portfolio
  *
- * Auther: Mohamed Yousef
- * Version: 1.00
- * GitHub: 
+ * Auther: Mohamed Yousef <engineer.mohamed.yossef@gmail.com>
+ * Version: 1.0.0
+ * GitHub: https://github.com/agashe/Designer-Portfolio
  */
 
 /**
@@ -96,17 +96,25 @@ function aboutTab(){
 
     content += '<h1>' + data.about.title + '</h1>';
     content += '<p>' + data.about.bio + '</p>';
-    content += '<p>' + data.about.major + '</p>';
 
-    content += '<ul>';
-    for (var i = 0;i < data.about.skills.length;i++) {
+    content += '<h4>Key Skills</h4>';
+    content += '<div class="clear"><ul>';
+    for (var i = 0;i < data.about.skills.length/2;i++) {
         content += '<li>' + data.about.skills[i] + '</li>';
     }
     content += '</ul>';
+    
+    content += '<ul>';
+    for (var i = data.about.skills.length/2;i < data.about.skills.length;i++) {
+        content += '<li>' + data.about.skills[i] + '</li>';
+    }
+    content += '</ul></div>';
 
-    content += '<p>Contact:</p>';
-    content += '<p><a href=""><i class="gg-facebook"></i></a>';
-    content += '<a href=""><i class="gg-mail"></i></a></p>';
+    content += '<h4>Contact</h4>';
+    content += '<p><a href="' + data.about.contact.facebook + '">';
+    content += '<i class="gg-facebook"></i></a>';
+    content += '<a href="mailto:' + data.about.contact.email + '">';
+    content += '<i class="gg-mail"></i></a></p>';
 
     return content;
 }
