@@ -52,11 +52,31 @@ main {
     padding: 25px;
 }
 
-/* ***** - About - ***** */
-#about-tab {
+main .tab {
     margin: 5px auto;
     text-align: center;
 }
+
+/* ***** - Work - ***** */
+#work-tab {
+    padding: 25px;
+}
+#work-tab .row {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    margin-bottom: 25px;
+}
+#work-tab .row .column {
+    padding: 5px;
+}
+#work-tab .row .column img {
+    height: 110px;
+    width: 200px;
+    object-fit: cover;
+    margin: 5px auto;
+}
+
+/* ***** - About - ***** */
 #about-tab h1 {
     margin: 15px;
 }
@@ -80,7 +100,7 @@ main {
     display: inline-block;
     margin: 10px;
 }
-.clear {
+#about-tab .clear {
     min-height: 250px;
     width: 725px;
     margin: 0 auto;
@@ -91,8 +111,9 @@ main {
 
 /* ******************** [Footer] ******************** */
 footer {
-    height: 25px;
+    height: 50px;
     text-align: center;
+    
 }
 footer #copyrights {
     font-size: 1em;

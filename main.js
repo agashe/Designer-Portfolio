@@ -39,20 +39,20 @@ document.addEventListener("DOMContentLoaded", function(){
     /**
      * Set logo / copyrights
      */
-    var copyrights = "All content rights are reserved to " + data.designer_name + ' &copy; 2020';
+    var copyrights = "All content rights are reserved <br> " + data.designer_name + ' &copy; 2020';
     document.getElementById('logo').innerText = data.designer_name;
     document.getElementById('copyrights').innerHTML = copyrights;
 
     /**
      * Set default tab
      */
-    setTab(work, 'toto');
+    setTab(work, workTab());
 
     /**
      * Select tab (work, personal and about)
      */
     document.getElementById('work-tab-btn').addEventListener('click', function(){
-        setTab(work, 'work');
+        setTab(work, workTab());
     });
 
     document.getElementById('personal-tab-btn').addEventListener('click', function(){
@@ -91,7 +91,21 @@ function setTab(tab, content){
  * Tabs
  */
 function workTab(){
-    
+    var content = '';
+
+    var i , j;
+    for (i = 0;i < 4;i++) {
+        content += '<div class="row">';
+        for (j = 0;j < 4;j++) {
+            content += '<div class="column">';
+            content += '<img src="/images/work/project-1/img1.jpg" alt=""/>';
+            content += '<p>test' + i + '</p>';
+            content += '</div>';
+        }
+        content += '</div>';
+    }
+
+    return content;
 }
 
 function personalTab(){
@@ -109,9 +123,9 @@ function aboutTab(){
     for (var i = 0;i < data.about.skills.length/2;i++) {
         content += '<li>' + data.about.skills[i] + '</li>';
     }
-    content += '</ul>';
+
+    content += '</ul><ul>';
     
-    content += '<ul>';
     for (var i = data.about.skills.length/2;i < data.about.skills.length;i++) {
         content += '<li>' + data.about.skills[i] + '</li>';
     }
