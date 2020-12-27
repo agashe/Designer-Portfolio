@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
     document.getElementById('personal-tab-btn').addEventListener('click', function(){
-        setTab(personal, 'personal');
+        setTab(personal, personalTab());
     });
 
     document.getElementById('about-tab-btn').addEventListener('click', function(){
@@ -92,15 +92,24 @@ function setTab(tab, content){
  */
 function workTab(){
     var content = '';
+    var i , j, k = 0;
+    var title = '', image = '';
 
-    var i , j;
     for (i = 0;i < 4;i++) {
         content += '<div class="row">';
         for (j = 0;j < 4;j++) {
+            if (data.work[k] === undefined) 
+                continue;
+
+            title = data.work[k].name;
+            image = data.work[k].cover;
+            
             content += '<div class="column">';
-            content += '<img src="/images/work/project-1/img1.jpg" alt=""/>';
-            content += '<p>test' + i + '</p>';
+            content += '<img src="' + image + '" alt="' + title + ' Cover"/>';
+            content += '<a href="javascript:;" class="link" data-id="'+ k +'">' + title + '</a>';
             content += '</div>';
+            
+            k += 1;
         }
         content += '</div>';
     }
@@ -109,7 +118,30 @@ function workTab(){
 }
 
 function personalTab(){
+    var content = '';
+    var i , j, k = 0;
+    var title = '', image = '';
 
+    for (i = 0;i < 4;i++) {
+        content += '<div class="row">';
+        for (j = 0;j < 4;j++) {
+            if (data.personal[k] === undefined) 
+                continue;
+
+            title = data.personal[k].name;
+            image = data.personal[k].image;
+            
+            content += '<div class="column">';
+            content += '<img src="' + image + '" alt="' + title + ' Cover"/>';
+            content += '<a href="javascript:;" class="link" data-id="'+ k +'">' + title + '</a>';
+            content += '</div>';
+            
+            k += 1;
+        }
+        content += '</div>';
+    }
+
+    return content;
 }
 
 function aboutTab(){

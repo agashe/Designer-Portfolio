@@ -15,6 +15,17 @@
 body {
     font-family: 'Tahoma';
 }
+
+.link {
+    display: block;
+    margin-right: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #492525;
+}
+.link:hover {
+    text-decoration: underline;
+}
 /* ******************** [Global] ******************** */
 
 /* ******************** [Header] ******************** */
@@ -36,13 +47,7 @@ header nav {
     padding: 20px;
 }
 header nav a {
-    margin-right: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    color: #492525;
-}
-header nav a:hover {
-    text-decoration: underline;
+    display: inline-block !important;
 }
 /* ******************** [Header] ******************** */
 
@@ -51,32 +56,31 @@ main {
     min-height: 430px;
     padding: 25px;
 }
-
 main .tab {
     margin: 5px auto;
+    padding: 25px;
     text-align: center;
 }
-
-/* ***** - Work - ***** */
-#work-tab {
-    padding: 25px;
-}
-#work-tab .row {
+main .tab .row {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     margin-bottom: 25px;
 }
-#work-tab .row .column {
+main .tab .row .column {
     padding: 5px;
 }
-#work-tab .row .column img {
+main .tab .row .column img {
     height: 110px;
     width: 200px;
     object-fit: cover;
     margin: 5px auto;
 }
 
+
 /* ***** - About - ***** */
+#about-tab {
+    padding-top: 0;
+}
 #about-tab h1 {
     margin: 15px;
 }

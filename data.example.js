@@ -4,14 +4,20 @@ var data = {
         {
             "name": "project #1",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ",
-            "cover": "",
+            "cover": "path/to/cover",
             "images": [
-                ""
+                "path/to/image #1",
+                "path/to/image #2",
+                "path/to/image #3"
             ]
         }
     ],
     "personal": [
-        "image #1"
+        {
+            "name": "Image #1",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing",
+            "image": "path/to/image",
+        }
     ],
     "about": {
         "title": "About",
