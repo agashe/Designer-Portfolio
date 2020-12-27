@@ -9,8 +9,11 @@
 /**
  * Please Note:
  * 
- * Befor start make sure to run command :
- * cp data.example.js data.js
+ * Befor start:
+ * - run command  $ cp data.example.js data.js
+ * - update data.js with your info.
+ * - add your favicon.ico
+ * - create images directory (optional!!)
  */
 
 /**
