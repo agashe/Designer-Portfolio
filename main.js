@@ -80,13 +80,13 @@ function hideAll(els){
 function setTab(tab, tabBtn, content){
     hideAll(tabs);
     show(tab);
-    tab.innerHTML = content;
-
+    
     // remove underline from all tabs buttons
     for (var i = 0;i < buttons.length;i++) {
         buttons[i].style.textDecoration = '';
     }
-
+    
+    tab.innerHTML = content;
     tabBtn.style.textDecoration = "underline";
 }
 
@@ -94,15 +94,17 @@ function setTab(tab, tabBtn, content){
  * Tabs Content
  */
 function tabContent(tab = 'work', id = null, isWorkTab = null){
+    var i, j, k = 0;
     var content = '';
-    var i , j, k = 0;
+    var description = '';
+    var clickHandler = '';
     var title = '', image = '';
-    var description = '', clickHandler = '';
-    
+    var rows = Math.ceil(((tab == 'work')? data.work.length : data.personal.length) / 4);
+
     switch (tab) {
         case 'work':
         case 'personal':
-            for (i = 0;i < 4;i++) {
+            for (i = 0;i < rows;i++) {
                 content += '<div class="row">';
                 for (j = 0;j < 4;j++) {
                     if (tab == 'work') {
@@ -132,6 +134,7 @@ function tabContent(tab = 'work', id = null, isWorkTab = null){
         break;
         
         case 'gallery':
+            if (data.work[id] === undefined && data.personal[id] === undefined) break;
             title = (isWorkTab)? data.work[id].name : data.personal[id].name;
             image = (isWorkTab)? data.work[id].cover : data.personal[id].image;
             description = (isWorkTab)? data.work[id].description : data.personal[id].description;
