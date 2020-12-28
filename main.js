@@ -150,7 +150,7 @@ function tabContent(tab = 'work', id = null){
             content += '<h1>' + data.personal[id].name + '</h1>';
             content += '<article>' + data.personal[id].description + '</article>';
             content += '<img src="' + data.personal[id].image +
-                       '" alt="' + data.personal[id].name + ' Image" class="main-image"/>';
+                       '" alt="' + data.personal[id].name + ' Image" id="main-image"/>';
         break;
         
         case 'about':
