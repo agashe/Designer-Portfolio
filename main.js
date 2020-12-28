@@ -23,15 +23,15 @@ var logo           = document.getElementById('logo');
 var copyrights     = document.getElementById('copyrights');
 
 var tabs           = document.getElementsByClassName('tab');
-var workTap        = document.getElementById('work-tab');
-var personalTap    = document.getElementById('personal-tab');
-var aboutTap       = document.getElementById('about-tab');
-var galleryTap     = document.getElementById('gallery-tab');
+var workTab        = document.getElementById('work-tab');
+var personalTab    = document.getElementById('personal-tab');
+var aboutTab       = document.getElementById('about-tab');
+var galleryTab     = document.getElementById('gallery-tab');
 
 var buttons        = document.getElementsByClassName('btn');
-var workTapBtn     = document.getElementById('work-tab-btn');
-var personalTapBtn = document.getElementById('personal-tab-btn');
-var aboutTapBtn    = document.getElementById('about-tab-btn');
+var workTabBtn     = document.getElementById('work-tab-btn');
+var personalTabBtn = document.getElementById('personal-tab-btn');
+var aboutTabBtn    = document.getElementById('about-tab-btn');
 
 document.addEventListener("DOMContentLoaded", function(){
     /**
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function(){
      */
     logo.innerText = data.designer_name;
     document.title = data.designer_name + ' Portfolio';
-    setTab(workTap, workTapBtn, tabContent('work'));
+    setTab(workTab, workTabBtn, tabContent('work'));
     copyrights.innerHTML = "All content rights are reserved <br> " + 
         data.designer_name + 
         ' &copy; 2020';
@@ -47,16 +47,16 @@ document.addEventListener("DOMContentLoaded", function(){
     /**
      * Select tab (work, personal, gallery and about)
      */
-    workTapBtn.addEventListener('click', function(){
-        setTab(workTap, workTapBtn, tabContent('work'));
+    workTabBtn.addEventListener('click', function(){
+        setTab(workTab, workTabBtn, tabContent('work'));
     });
 
-    personalTapBtn.addEventListener('click', function(){
-        setTab(personalTap, personalTapBtn, tabContent('personal'));
+    personalTabBtn.addEventListener('click', function(){
+        setTab(personalTab, personalTabBtn, tabContent('personal'));
     });
 
-    aboutTapBtn.addEventListener('click', function(){
-        setTab(aboutTap, aboutTapBtn, tabContent('about'));
+    aboutTabBtn.addEventListener('click', function(){
+        setTab(aboutTab, aboutTabBtn, tabContent('about'));
     });
 });
 
@@ -108,17 +108,17 @@ function tabContent(tab = 'work', id = null){
                         if (data.work[k] === undefined) continue;
                         title = data.work[k].name;
                         image = data.work[k].cover;
-                        clickHandler = "setTab(galleryTap, workTapBtn, tabContent('work_gallery', "+ k +"))";
+                        clickHandler = "setTab(galleryTab, workTabBtn, tabContent('work_gallery', "+ k +"))";
                     }
                     else if (tab == 'personal') {
                         if (data.personal[k] === undefined) continue;
                         title = data.personal[k].name;
                         image = data.personal[k].image;
-                        clickHandler = "setTab(galleryTap, personalTapBtn, tabContent('personal_gallery', "+ k +"))";
+                        clickHandler = "setTab(galleryTab, personalTabBtn, tabContent('personal_gallery', "+ k +"))";
                     }
 
                     content += '<div class="column">';
-                    content += '<img src="' + image + '" alt="' + title + ' Cover"/>';
+                    content += '<img src="' + image + '" alt="' + title + '"/>';
                     content += '<a href="javascript:;" class="link"';
                     content += 'onclick="' + clickHandler + '">';
                     content += title + '</a>';
@@ -131,8 +131,23 @@ function tabContent(tab = 'work', id = null){
         break;
         
         case 'work_gallery':
+            content += '<h1>' + data.work[id].name + '</h1>';
+            content += '<article>' + data.work[id].description + '</article>';
+            content += '<img src="' + data.work[id].cover +
+                       '" alt="' + data.work[id].name + ' Image" class="main-image"/>';
+
+            content += '<div class="slider"><ul>';
+            for (i = 0;i < data.work[id].images.length;i++) {
+                content += '<img src="' + data.work[id].images[i] + '"/>';
+            }
+            content += '</div>';
+        break;
+
         case 'personal_gallery':
-            content = 'test';
+            content += '<h1>' + data.personal[id].name + '</h1>';
+            content += '<article>' + data.personal[id].description + '</article>';
+            content += '<img src="' + data.personal[id].image +
+                       '" alt="' + data.personal[id].name + ' Image" class="main-image"/>';
         break;
         
         case 'about':
