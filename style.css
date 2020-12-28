@@ -85,7 +85,7 @@ main .tab .row .column img {
 }
 #gallery-tab #main-image {
     height: 50%;
-    width: 75%;
+    width: 50%;
     margin-bottom: 15px;
     object-fit: cover;
 }
@@ -99,6 +99,7 @@ main .tab .row .column img {
 #gallery-tab .slider img{
     height: 90%;
     width: 85%;
+    margin: 0 auto;
     object-fit: cover;
     cursor: pointer;
 }
