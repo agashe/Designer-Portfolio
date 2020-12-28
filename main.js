@@ -93,10 +93,11 @@ function setTab(tab, tabBtn, content){
 /**
  * Tabs Content
  */
-function tabContent(tab = 'work', id = null){
+function tabContent(tab = 'work', id = null, isWorkTab = null){
     var content = '';
     var i , j, k = 0;
-    var title = '', image = '', clickHandler = '';
+    var title = '', image = '';
+    var description = '', clickHandler = '';
     
     switch (tab) {
         case 'work':
@@ -108,13 +109,13 @@ function tabContent(tab = 'work', id = null){
                         if (data.work[k] === undefined) continue;
                         title = data.work[k].name;
                         image = data.work[k].cover;
-                        clickHandler = "setTab(galleryTab, workTabBtn, tabContent('work_gallery', "+ k +"))";
+                        clickHandler = "setTab(galleryTab, workTabBtn, tabContent('gallery', "+ k +", true))";
                     }
                     else if (tab == 'personal') {
                         if (data.personal[k] === undefined) continue;
                         title = data.personal[k].name;
                         image = data.personal[k].image;
-                        clickHandler = "setTab(galleryTab, personalTabBtn, tabContent('personal_gallery', "+ k +"))";
+                        clickHandler = "setTab(galleryTab, personalTabBtn, tabContent('gallery', "+ k +", false))";
                     }
 
                     content += '<div class="column">';
@@ -130,13 +131,17 @@ function tabContent(tab = 'work', id = null){
             }
         break;
         
-        case 'work_gallery':
-            content += '<h1>' + data.work[id].name + '</h1>';
-            content += '<article>' + data.work[id].description + '</article>';
-            content += '<img src="' + data.work[id].cover +
-                       '" alt="' + data.work[id].name + ' Image" id="main-image"/>';
+        case 'gallery':
+            title = (isWorkTab)? data.work[id].name : data.personal[id].name;
+            image = (isWorkTab)? data.work[id].cover : data.personal[id].image;
+            description = (isWorkTab)? data.work[id].description : data.personal[id].description;
+            
+            content += '<h1>' + title + '</h1>';
+            content += '<article>' + description + '</article>';
+            content += '<img src="' + image +
+                       '" alt="' + title + ' Image" id="main-image"/>';
 
-            if (!data.work[id].images.length) break;
+            if (!isWorkTab || !data.work[id].images.length) break;
             clickHandler = "document.getElementById('main-image').src = this.src";
             content += '<div class="slider">';
             for (i = 0;i < data.work[id].images.length;i++) {
@@ -144,13 +149,6 @@ function tabContent(tab = 'work', id = null){
                            '" onclick="' + clickHandler + '"/>';
             }
             content += '</div>';
-        break;
-
-        case 'personal_gallery':
-            content += '<h1>' + data.personal[id].name + '</h1>';
-            content += '<article>' + data.personal[id].description + '</article>';
-            content += '<img src="' + data.personal[id].image +
-                       '" alt="' + data.personal[id].name + ' Image" id="main-image"/>';
         break;
         
         case 'about':
