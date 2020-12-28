@@ -76,6 +76,32 @@ main .tab .row .column img {
     margin: 5px auto;
 }
 
+/* ***** - Gallery - ***** */
+#gallery-tab {
+    padding-top: 0;
+}
+#gallery-tab h1 , #gallery-tab article {
+    margin: 15px;
+}
+#gallery-tab #main-image {
+    height: 50%;
+    width: 75%;
+    margin-bottom: 15px;
+    object-fit: cover;
+}
+#gallery-tab .slider {
+    height: 150px;
+    width: 75%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+}
+#gallery-tab .slider img{
+    height: 90%;
+    width: 85%;
+    object-fit: cover;
+    cursor: pointer;
+}
 
 /* ***** - About - ***** */
 #about-tab {

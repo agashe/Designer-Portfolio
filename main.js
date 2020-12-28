@@ -134,11 +134,14 @@ function tabContent(tab = 'work', id = null){
             content += '<h1>' + data.work[id].name + '</h1>';
             content += '<article>' + data.work[id].description + '</article>';
             content += '<img src="' + data.work[id].cover +
-                       '" alt="' + data.work[id].name + ' Image" class="main-image"/>';
+                       '" alt="' + data.work[id].name + ' Image" id="main-image"/>';
 
-            content += '<div class="slider"><ul>';
+            if (!data.work[id].images.length) break;
+            clickHandler = "document.getElementById('main-image').src = this.src";
+            content += '<div class="slider">';
             for (i = 0;i < data.work[id].images.length;i++) {
-                content += '<img src="' + data.work[id].images[i] + '"/>';
+                content += '<img src="' + data.work[id].images[i] + 
+                           '" onclick="' + clickHandler + '"/>';
             }
             content += '</div>';
         break;
