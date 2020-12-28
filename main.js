@@ -93,11 +93,11 @@ function setTab(tab, tabBtn, content){
 /**
  * Tabs Content
  */
-function tabContent(tab = 'work'){
+function tabContent(tab = 'work', id = null){
     var content = '';
     var i , j, k = 0;
-    var title = '', image = '';
-
+    var title = '', image = '', clickHandler = '';
+    
     switch (tab) {
         case 'work':
         case 'personal':
@@ -108,16 +108,20 @@ function tabContent(tab = 'work'){
                         if (data.work[k] === undefined) continue;
                         title = data.work[k].name;
                         image = data.work[k].cover;
+                        clickHandler = "setTab(galleryTap, workTapBtn, tabContent('work_gallery', "+ k +"))";
                     }
                     else if (tab == 'personal') {
                         if (data.personal[k] === undefined) continue;
                         title = data.personal[k].name;
                         image = data.personal[k].image;
+                        clickHandler = "setTab(galleryTap, personalTapBtn, tabContent('personal_gallery', "+ k +"))";
                     }
 
                     content += '<div class="column">';
                     content += '<img src="' + image + '" alt="' + title + ' Cover"/>';
-                    content += '<a href="javascript:;" class="link" data-id="'+ k +'">' + title + '</a>';
+                    content += '<a href="javascript:;" class="link"';
+                    content += 'onclick="' + clickHandler + '">';
+                    content += title + '</a>';
                     content += '</div>';
                     
                     k += 1;
@@ -125,6 +129,12 @@ function tabContent(tab = 'work'){
                 content += '</div>';
             }
         break;
+        
+        case 'work_gallery':
+        case 'personal_gallery':
+            content = 'test';
+        break;
+        
         case 'about':
             content += '<h1>' + data.about.title + '</h1>';
             content += '<article>' + data.about.bio + '</article>';
