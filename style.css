@@ -150,3 +150,31 @@ footer #copyrights {
     font-size: 1em;
 }
 /* ******************** [Footer] ******************** */
+
+/* ******************** [Responsive] ******************** */
+@media only screen and (max-width: 1000px) {
+    main .tab .row .column img {
+        width: 125px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    header {
+        height: 150px;
+        display: block;
+        text-align: center;
+    }
+    header nav {
+        margin-top: 0px;
+    }
+
+    main .tab {
+        padding: 0px;
+    }
+    main .tab .row {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        margin-bottom: 0px;
+    }
+}
+/* ******************** [Responsive] ******************** */
