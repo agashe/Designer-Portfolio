@@ -159,7 +159,7 @@ function tabContent(tab = 'work', id = null, isWorkTab = null){
             content += '<article>' + data.about.bio + '</article>';
 
             content += '<h4>Key Skills</h4>';
-            content += '<div class="clear"><ul>';
+            content += '<div class="skills"><ul>';
             for (i = 0;i < data.about.skills.length/2;i++) {
                 content += '<li>' + data.about.skills[i] + '</li>';
             }

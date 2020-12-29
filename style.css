@@ -96,7 +96,7 @@ main .tab .row .column img {
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20%;
 }
-#gallery-tab .slider img{
+#gallery-tab .slider img {
     height: 90%;
     width: 85%;
     margin: 0 auto;
@@ -118,8 +118,8 @@ main .tab .row .column img {
     margin-top: 40px;
 }
 #about-tab ul {
-    width: 40%;
     margin: 25px 15px;
+    padding-left: 15px;
     text-align: left;
     float: right;
 }
@@ -131,12 +131,12 @@ main .tab .row .column img {
     display: inline-block;
     margin: 10px;
 }
-#about-tab .clear {
+#about-tab .skills {
     min-height: 250px;
-    width: 725px;
+    width: 53%;
     margin: 0 auto;
-    padding: 0px 200px;
-    clear: both;
+    display: grid;
+    grid-template-columns: 50% 50%;
 }
 /* ******************** [Main] ******************** */
 
@@ -155,6 +155,14 @@ footer #copyrights {
 @media only screen and (max-width: 1000px) {
     main .tab .row .column img {
         width: 125px;
+    }
+
+    #gallery-tab .slider {
+        width: 100%;
+    }
+
+    #about-tab .skills {
+        width: 100%;
     }
 }
 
@@ -175,6 +183,38 @@ footer #copyrights {
         display: grid;
         grid-template-columns: 50% 50%;
         margin-bottom: 0px;
+    }
+
+    #about-tab .skills {
+        display: block;
+        width: 100%;
+    }
+    #about-tab .skills ul {
+        margin: 0;
+    }
+
+    #gallery-tab #main-image {
+        height: 100%;
+        width: 100%;
+    }
+    #gallery-tab .slider {
+        min-height: 350px;
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+    }
+    #gallery-tab .slider img {
+        height: 90%;
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    #gallery-tab .slider {
+        grid-template-columns: 50% 50%;
+    }
+    #gallery-tab .slider img {
+        height: 90%;
+        width: 90%;
     }
 }
 /* ******************** [Responsive] ******************** */
